@@ -6,6 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.CircleCropTransformation
 import com.example.hiltmvvmflowmoshi.data.Dogs
 import com.example.hiltmvvmflowmoshi.databinding.EachRowBinding
 import javax.inject.Inject
@@ -17,7 +18,9 @@ class DogsAdapter
     class DogsViewHolder(private val binding: EachRowBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(dogs: Dogs) {
             binding.apply {
-                image.load(dogs.url)
+                image.load(dogs.url){
+                    crossfade(true)
+                }
             }
         }
     }
